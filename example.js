@@ -1,57 +1,43 @@
-package Main;
-import java.util.Scanner;
-public class Main {
+/*
+Assessment Requirements
+1. Create a variable that can hold a number of NFT's. What type of variable might this be?
+2. Create an object inside your mintNFT function that will hold the metadata for your NFTs. 
+   The metadata values will be passed to the function as parameters. When the NFT is ready, 
+   you will store it in the variable you created in step 1
+3. Your listNFTs() function will print all of your NFTs metadata to the console (i.e. console.log("Name: " + someNFT.name))
+4. For good measure, getTotalSupply() should return the number of NFT's you have created
+*/
 
-public static void main(String[]args){
-	 	
-        Scanner scan = new Scanner(System.in);
-        
-        System.out.println("Actual Consumption");
-        int AC = scan.nextInt();
-        System.out.println("Current Reading");
-        int CR = scan.nextInt();
-        System.out.println("Previous Reading");
-        int PR = scan.nextInt();
-        System.out.println("Total Bill");
-        double TB = scan.nextDouble();
-        
-        
-        double RPKH = TB/PR-CR;
-        System.out.println("Owner");
-        System.out.println("Rate per KWH = " + RPKH);
-       
-       
-        System.out.println("Current Reading");
-        int T1CR = scan.nextInt();
-        System.out.println("Previous Reading");
-        int T1PR = scan.nextInt();
-       
-        int T1AC = T1PR-T1CR;
-        System.out.println("Tenant1");
-        System.out.println("Actual Consumption = " + T1AC);
+// create a variable to hold your NFT's
 
-        System.out.println("Current Reading");
-        int T2CR = scan.nextInt();
-        System.out.println("Previous Reading");
-        int T2PR = scan.nextInt();
-       
-        int T2AC = T2PR-T2CR;
-        System.out.println("Tenant2");
-        System.out.println("Actual Consumption = " + T2AC);
-        
-        double kwh = TB/AC;
-        
-        double D = TB-(kwh*(AC-T1AC+T2AC));
-        double A = Math.round(D*100)/100;
-        int B = (int) (TB -kwh*T1AC);
-        int C = (int) (TB -kwh*T2AC);
-        
-        System.out.println("    ");
-        System.out.println("KWH: "+ kwh);
-        System.out.println("    ");
-        System.out.println("Owner Total Bill: " + A );
-        System.out.println("Tenant1 Total Bill: " + B );
-        System.out.println("Tenant2 Total Bill: " + C );
+// this function will take in some values as parameters, create an
+// NFT object using the parameters passed to it for its metadata, 
+// and store it in the variable above.
+function mintNFT (_name, _eyecolor, _shirtType, _bling) {
+    const NFT = {
+        "name": _name,
+        "eyecolor": _eyecolor,
+        "shirtType": _shirtType,
+        "bling": _bling,
     }
-   
+    NFTs.push(NFT);
+    console.log("Minted:" + _name);
 }
+
+// create a "loop" that will go through an "array" of NFT's
+// and print their metadata with console.log()
+function listNFTs () {
+    for(let i = 0; i < NFTs.length; i++){
+        console.log(NFTs[i]);
+    }
+}
+
+// print the total number of NFTs we have minted to the console
+function getTotalSupply() {
+    console.log(NFTs.length);
+}
+
+// call your functions below this line
+mintNFT("Bob","Red", "Hoodie", "Chain");
+listNFTs();
+getTotalSupply();
